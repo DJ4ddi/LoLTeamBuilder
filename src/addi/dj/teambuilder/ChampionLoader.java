@@ -34,7 +34,7 @@ public class ChampionLoader implements Callable<TreeSet<Champion>> {
 				
 				String name = championElement.getAttribute ("name"); // Name
 				try {
-					Style style = Style.valueOf (championElement.getElementsByTagName ("style").item (0).getTextContent()); // Playstyle
+					Style style = Style.valueOf (championElement.getAttribute ("style")); // Playstyle
 					
 					Element roleElement = (Element) championElement.getElementsByTagName ("roles").item (0);
 					Role primaryRole = Role.valueOf (roleElement.getAttribute ("primary")); // Primary role
@@ -73,7 +73,7 @@ public class ChampionLoader implements Callable<TreeSet<Champion>> {
 			}
 			Initialiser.getMainFrame().setChampionWarning (sb.substring (0, sb.length() - 2));
 		}
-
+		
 		return rv;
 	}
 	
